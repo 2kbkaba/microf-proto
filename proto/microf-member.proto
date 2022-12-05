@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package member;
+
+service MemberService {
+  rpc FindById (FindByIdRequest) returns (FindByIdResponse) {}
+  rpc FindAll (FinAllRequest) returns (FindAllResponse) {}
+  rpc CreateMember(CreateMemberRequest) returns (CreateMemberResponse) {}
+  rpc UpdateMember(UpdateMemberRequest) returns (UpdateMemberResponse) {}
+  rpc RemoveMember(RemoveMemberRequest) returns (RemoveMemberResponse) {}
+}
+
+// Member
+message Member {
+  string id = 1;
+  string type = 2;
+  int32 numberId = 3;
+  string email = 4;
+  string credentialType = 5;
+  string credentialNumber = 6;
+  string firstname = 7;
+  string lastname = 8;
+  string phone = 9;
+  bool acceptedConditions = 10;
+  string street = 11;
+  string city = 12;
+  string group = 13;
+  string activity = 14;
+  string enterpriseType = 15;
+}
+
+message FindAllResponseData {
+  repeated Member members = 15;
+  int32 total = 16;
+  int32 count = 17;
+  int32 page = 18;
+}
+
+// FindAllMembers
+message FinAllRequest {
+  int32 page = 1;
+}
+
+message FindAllResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllResponseData data = 3;
+}
+
+// FindMember
+message FindByIdRequest {
+  string id = 1;
+}
+
+message FindByIdResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  Member data = 3;
+}
+
+// CreateMember
+message CreateMemberRequest {
+  string type = 1;
+  int32 numberId = 2;
+  string email = 3;
+  string credentialType = 4;
+  string credentialNumber = 5;
+  string firstname = 6;
+  string lastname = 7;
+  string phone = 8;
+  bool acceptedConditions = 9;
+  string street = 10;
+  string city = 11;
+  string group = 12;
+  string activity = 13;
+  string enterpriseType = 14;
+}
+
+message CreateMemberResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string data = 3;
+}
+
+// UpdateMember
+message UpdateMemberRequest {
+  int32 id = 1;
+  string type = 2;
+  int32 numberId = 3;
+  string email = 4;
+  string credentialType = 5;
+  string credentialNumber = 6;
+  string firstname = 7;
+  string lastname = 8;
+  string phone = 9;
+  bool acceptedConditions = 10;
+  string street = 11;
+  string city = 12;
+  string group = 13;
+  string activity = 14;
+  string enterpriseType = 15;
+}
+
+message UpdateMemberResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string data = 3;
+}
+
+// RemoveMember
+message RemoveMemberRequest {
+  string id = 1;
+}
+
+message RemoveMemberResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
