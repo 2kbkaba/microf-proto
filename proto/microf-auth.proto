@@ -29,7 +29,7 @@ enum USERNAME_TYPE {
 
 message LoginRequest {
   string username = 1;
-  USERNAME_TYPE type = 2;
+  string type = 2;
   string password = 3;
 }
 
