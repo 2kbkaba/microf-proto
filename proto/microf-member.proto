@@ -4,7 +4,7 @@ package member;
 
 service MemberService {
   rpc FindById (FindByIdRequest) returns (FindByIdResponse) {}
-  rpc FindAll (FinAllRequest) returns (FindAllResponse) {}
+  rpc FindAll (FindAllRequest) returns (FindAllResponse) {}
   rpc CreateMember(CreateMemberRequest) returns (CreateMemberResponse) {}
   rpc UpdateMember(UpdateMemberRequest) returns (UpdateMemberResponse) {}
   rpc RemoveMember(RemoveMemberRequest) returns (RemoveMemberResponse) {}
@@ -40,7 +40,7 @@ message FindAllResponseData {
 }
 
 // FindAllMembers
-message FinAllRequest {
+message FindAllRequest {
   int32 page = 1;
 }
 
