@@ -14,8 +14,6 @@ message RegisterRequest {
   string phone = 1;
   optional string email = 2;
   string password = 3;
-  string createdAt = 4;
-  string updatedAt = 5;
 }
 
 message RegisterResponse {
