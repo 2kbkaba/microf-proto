@@ -13,27 +13,30 @@ service MemberService {
 // Member
 message Member {
   string id = 1;
-  string type = 2;
-  int32 numberId = 3;
-  string email = 4;
-  string credentialType = 5;
-  string credentialNumber = 6;
-  string firstname = 7;
-  string lastname = 8;
-  string phone = 9;
-  bool acceptedConditions = 10;
-  string street = 11;
-  string city = 12;
-  string group = 13;
-  string activity = 14;
-  string enterpriseType = 15;
+  string userId = 2;
+  string type = 3;
+  int32 numberId = 4;
+  string email = 5;
+  string credentialType = 6;
+  string credentialNumber = 7;
+  string firstname = 8;
+  string lastname = 9;
+  string phone = 10;
+  bool acceptedConditions = 11;
+  string street = 12;
+  string city = 13;
+  string group = 14;
+  string activity = 15;
+  string enterpriseType = 16;
+  string createdAt = 17;
+  string updatedAt = 18;
 }
 
 message FindAllResponseData {
-  repeated Member members = 15;
-  int32 total = 16;
-  int32 count = 17;
-  int32 page = 18;
+  repeated Member members = 1;
+  int32 total = 2;
+  int32 count = 3;
+  int32 page = 4;
 }
 
 // FindAllMembers
@@ -60,34 +63,10 @@ message FindByIdResponse {
 
 // CreateMember
 message CreateMemberRequest {
-  string type = 1;
-  int32 numberId = 2;
-  string email = 3;
-  string credentialType = 4;
-  string credentialNumber = 5;
-  string firstname = 6;
-  string lastname = 7;
-  string phone = 8;
-  bool acceptedConditions = 9;
-  string street = 10;
-  string city = 11;
-  string group = 12;
-  string activity = 13;
-  string enterpriseType = 14;
-}
-
-message CreateMemberResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string data = 3;
-}
-
-// UpdateMember
-message UpdateMemberRequest {
-  int32 id = 1;
+  string userId = 1;
   string type = 2;
   int32 numberId = 3;
-  string email = 4;
+  optional string email = 4;
   string credentialType = 5;
   string credentialNumber = 6;
   string firstname = 7;
@@ -101,10 +80,35 @@ message UpdateMemberRequest {
   string enterpriseType = 15;
 }
 
+message CreateMemberResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string id = 3;
+}
+
+// UpdateMember
+message UpdateMemberRequest {
+  int32 id = 1;
+  optional string type = 2;
+  optional int32 numberId = 3;
+  optional string email = 4;
+  optional string credentialType = 5;
+  optional string credentialNumber = 6;
+  optional string firstname = 7;
+  optional string lastname = 8;
+  optional string phone = 9;
+  optional bool acceptedConditions = 10;
+  optional string street = 11;
+  optional string city = 12;
+  optional string group = 13;
+  optional string activity = 14;
+  optional string enterpriseType = 15;
+}
+
 message UpdateMemberResponse {
   int32 status = 1;
   repeated string error = 2;
-  string data = 3;
+  string id = 3;
 }
 
 // RemoveMember

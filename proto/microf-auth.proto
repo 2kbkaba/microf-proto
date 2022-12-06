@@ -14,18 +14,17 @@ message RegisterRequest {
   string phone = 1;
   optional string email = 2;
   string password = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
 }
 
 message RegisterResponse {
   int32 status = 1;
   repeated string error = 2;
+  string userId = 3;
 }
 
 // Login
-enum USERNAME_TYPE {
-  PHONE = 0;
-  EMAIL = 1;
-}
 
 message LoginRequest {
   string username = 1;
