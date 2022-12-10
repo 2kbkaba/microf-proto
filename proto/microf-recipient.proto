@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package recipient;
+
+service RecipientService {
+  rpc FindById (FindByIdRequest) returns (FindByIdResponse) {}
+  rpc FindAll (FindAllRequest) returns (FindAllResponse) {}
+  rpc CreateRecipient(CreateRecipientRequest) returns (CreateRecipientResponse) {}
+  rpc UpdateRecipient(UpdateRecipientRequest) returns (UpdateRecipientResponse) {}
+  rpc RemoveRecipient(RemoveRecipientRequest) returns (RemoveRecipientResponse) {}
+}
+
+// Recipient
+message Recipient {
+  string id = 1;
+  string userId = 2;
+  string recipientType = 3;
+  int32 numberId = 4;
+  optional string email = 5;
+  string credentialType = 6;
+  string credentialNumber = 7;
+  string firstname = 8;
+  string lastname = 9;
+  string phone = 10;
+  string profession = 11;
+  bool acceptedConditions = 12;
+  bool isGroup = 13;
+  optional string groupName = 14;
+  optional string address = 15;
+  string city = 16;
+  repeated string activities = 17;
+  optional string enterpriseType = 18;
+  string maritalStatus = 19;
+  string gender = 20;
+  string dateOfBirth = 21;
+  string birthplace = 22;
+  string createdAt = 23;
+  string updatedAt = 24;
+}
+
+message FindAllResponseData {
+  repeated Recipient recipients = 1;
+  int32 total = 2;
+  int32 count = 3;
+  int32 page = 4;
+}
+
+// FindAllRecipients
+message FindAllRequest {
+  int32 page = 1;
+  optional int32 perPage = 2;
+}
+
+message FindAllResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllResponseData data = 3;
+}
+
+// FindRecipient
+message FindByIdRequest {
+  string id = 1;
+}
+
+message FindByIdResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  Recipient data = 3;
+}
+
+// CreateRecipient
+message CreateRecipientRequest {
+  string userId = 1;
+  string recipientType = 2;
+  int32 numberId = 3;
+  optional string email = 4;
+  string credentialType = 5;
+  string credentialNumber = 6;
+  string firstname = 7;
+  string lastname = 8;
+  string phone = 9;
+  string profession = 10;
+  bool acceptedConditions = 11;
+  bool isGroup = 12;
+  optional string groupName = 13;
+  optional string address = 14;
+  string city = 15;
+  repeated string activities = 16;
+  optional string enterpriseType = 17;
+  string maritalStatus = 18;
+  string gender = 19;
+  string dateOfBirth = 20;
+  string birthplace = 21;
+}
+
+message CreateRecipientResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string id = 3;
+}
+
+// UpdateRecipient
+message UpdateRecipientRequest {
+  string id = 1;
+  optional string recipientType = 2;
+  optional int32 numberId = 3;
+  optional string email = 4;
+  optional string credentialType = 5;
+  optional string credentialNumber = 6;
+  optional string firstname = 7;
+  optional string lastname = 8;
+  optional string phone = 9;
+  optional string profession = 10;
+  optional bool acceptedConditions = 11;
+  optional bool isGroup = 12;
+  optional string groupName = 13;
+  optional string address = 14;
+  optional string city = 15;
+  repeated string activities = 16;
+  optional string enterpriseType = 17;
+  optional string maritalStatus = 18;
+  optional string gender = 19;
+  optional string dateOfBirth = 20;
+  optional string birthplace = 21;
+}
+
+message UpdateRecipientResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string id = 3;
+}
+
+// RemoveRecipient
+message RemoveRecipientRequest {
+  string id = 1;
+}
+
+message RemoveRecipientResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
