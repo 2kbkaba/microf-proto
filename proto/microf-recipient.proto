@@ -47,7 +47,7 @@ message FindAllResponseData {
 
 // FindAllRecipients
 message FindAllRequest {
-  int32 page = 1;
+  optional int32 page = 1;
   optional int32 perPage = 2;
 }
 
