@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package recipientType;
+
+service RecipientTypeService {
+  rpc FindOne (FindOneRequest) returns (FindOneResponse) {}
+  rpc FindAll (FindAllRequest) returns (FindAllResponse) {}
+  rpc CreateRecipientType (CreateRecipientTypeRequest) returns (CreateRecipientTypeResponse) {}
+  rpc UpdateRecipientType (UpdateRecipientTypeRequest) returns (UpdateRecipientTypeResponse) {}
+  rpc RemoveRecipientType (RemoveRecipientTypeRequest) returns (RemoveRecipientTypeResponse) {}
+}
+
+// RecipientType
+message RecipientTypeData {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+  string updatedBy = 6;
+}
+// Create RecipientType
+message CreateRecipientTypeRequest {
+  string name = 1;
+  string description = 2;
+}
+
+message CreateRecipientTypeResponse {
+  int32 status = 1;
+  string id = 2;
+  repeated string error = 3;
+}
+
+// Find RecipientType
+
+message FindOneRequest {
+  string id = 1;
+}
+
+message FindOneResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  RecipientTypeData data = 3;
+}
+
+message FindAllRequest {
+  optional int32 page = 1;
+  optional int32 perPage = 2;
+}
+
+message FindAllResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  message data {
+    repeated RecipientTypeData activities = 1;
+    int32 total = 2;
+    int32 count = 3;
+    int32 page = 4;
+  }
+}
+
+// Update RecipientType
+
+message UpdateRecipientTypeRequest {
+  string id = 1;
+  optional string name = 2;
+  optional string description = 3;
+}
+
+message UpdateRecipientTypeResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
+
+// Remove type
+
+message RemoveRecipientTypeRequest {
+  int32 id = 1;
+}
+
+message RemoveRecipientTypeResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
