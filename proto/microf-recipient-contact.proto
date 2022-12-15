@@ -2,7 +2,12 @@ syntax = "proto3";
 
 package recipientContact;
 
-service ContactService {}
+service ContactService {
+  rpc FindByRecipient (FindByRecipientRequest) returns (FindByRecipientResponse);
+  rpc CreateContact (CreateContactRequest) returns (CreateContactResponse);
+  rpc UpdateContact (UpdateContactRequest) returns (UpdateContactResponse);
+  rpc RemoveContact (RemoveContactRequest) returns (RemoveContactResponse);
+}
 
 // Contact
 message Contact {
