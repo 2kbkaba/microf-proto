@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package recipientFile;
+
+service RecipientFile {
+  rpc FindByRecipient (FindByRecipientRequest) returns (FindByRecipientResponse);
+  rpc FindByFileType (FindByFileTypeRequest) returns (FindByFileTypeResponse);
+  rpc CreateFile (CreateFileRequest) returns (CreateFileResponse);
+  rpc UpdateFile (UpdateFileRequest) returns (UpdateFileResponse);
+  rpc RemoveFile (RemoveFileRequest) returns (RemoveFileResponse);
+}
+
+// File
+
+message FileData {
+  string id = 1;
+  string recipientId = 2;
+  string fileTypeId = 3;
+  string fileUrl = 4;
+  string createdAt = 5;
+  string updatedAt = 6;
+  string updatedBy = 7;
+}
+
+// Create File
+
+message CreateFileRequest {
+  string recipientId = 1;
+  string fileTypeId = 2;
+  string fileUrl = 3;
+}
+
+message CreateFileResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string id = 3;
+}
+
+// FindBYRecipient
+
+message FindByRecipientRequest {
+  string recipientId = 1;
+}
+
+message FindByRecipientResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  repeated FileData data = 3;
+}
+
+message FindByFileTypeRequest {
+  string fileTypeId = 1;
+}
+
+message FindByFileTypeResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  repeated FileData data = 3;
+}
+
+// Update File
+
+message UpdateFileRequest {
+  string id = 1;
+  string recipientId = 2;
+  string fileTypeId = 3;
+  string fileUrl = 4;
+}
+
+message UpdateFileResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
+
+// Remove File
+
+message RemoveFileRequest {
+  string id = 1;
+}
+
+message RemoveFileResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
