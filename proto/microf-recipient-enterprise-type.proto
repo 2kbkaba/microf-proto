@@ -72,7 +72,7 @@ message UpdateEnterpriseTypeResponse {
   repeated string error = 2;
 }
 
-// Remove activity
+// Remove EnterpriseType
 
 message RemoveEnterpriseTypeRequest {
   int32 id = 1;
