@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package recipientEnterpriseType;
+
+service EnterpriseTypeService {
+  rpc FindOne (FindOneRequest) returns (FindOneResponse) {}
+  rpc FindAll (FindAllRequest) returns (FindAllResponse) {}
+  rpc CreateEnterpriseType (CreateEnterpriseTypeRequest) returns (CreateEnterpriseTypeResponse) {}
+  rpc UpdateEnterpriseType (UpdateEnterpriseTypeRequest) returns (UpdateEnterpriseTypeResponse) {}
+  rpc RemoveEnterpriseType (RemoveEnterpriseTypeRequest) returns (RemoveEnterpriseTypeResponse) {}
+}
+
+// EnterpriseType
+message EnterpriseTypeData {
+  string id = 1;
+  string name = 2;
+  string acronym = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+  string updatedBy = 6;
+}
+// Create EnterpriseType
+message CreateEnterpriseTypeRequest {
+  string name = 1;
+  string acronym = 2;
+}
+
+message CreateEnterpriseTypeResponse {
+  int32 status = 1;
+  string id = 2;
+  repeated string error = 3;
+}
+
+// Find EnterpriseType
+
+message FindOneRequest {
+  string id = 1;
+}
+
+message FindOneResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  EnterpriseTypeData data = 3;
+}
+
+message FindAllRequest {
+  optional int32 page = 1;
+  optional int32 perPage = 2;
+}
+
+message FindAllResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  message data {
+    repeated EnterpriseTypeData activities = 1;
+    int32 total = 2;
+    int32 count = 3;
+    int32 page = 4;
+  }
+}
+
+// Update EnterpriseType
+
+message UpdateEnterpriseTypeRequest {
+  string id = 1;
+  optional string name = 2;
+  optional string acronym = 3;
+}
+
+message UpdateEnterpriseTypeResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
+
+// Remove activity
+
+message RemoveEnterpriseTypeRequest {
+  int32 id = 1;
+}
+
+message RemoveEnterpriseTypeResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
