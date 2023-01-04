@@ -1,17 +1,17 @@
 syntax = "proto3";
 
-package recipientType;
+package recipientFileType;
 
-service RecipientTypeService {
+service FileTypeService {
   rpc FindOne (FindOneRequest) returns (FindOneResponse) {}
   rpc FindAll (FindAllRequest) returns (FindAllResponse) {}
-  rpc CreateRecipientType (CreateRecipientTypeRequest) returns (CreateRecipientTypeResponse) {}
-  rpc UpdateRecipientType (UpdateRecipientTypeRequest) returns (UpdateRecipientTypeResponse) {}
-  rpc RemoveRecipientType (RemoveRecipientTypeRequest) returns (RemoveRecipientTypeResponse) {}
+  rpc CreateFileType (CreateFileTypeRequest) returns (CreateFileTypeResponse) {}
+  rpc UpdateFileType (UpdateFileTypeRequest) returns (UpdateFileTypeResponse) {}
+  rpc RemoveFileType (RemoveFileTypeRequest) returns (RemoveFileTypeResponse) {}
 }
 
-// RecipientType
-message RecipientTypeData {
+// FileType
+message FileTypeData {
   string id = 1;
   string name = 2;
   string description = 3;
@@ -19,19 +19,19 @@ message RecipientTypeData {
   string updatedAt = 5;
   string updatedBy = 6;
 }
-// Create RecipientType
-message CreateRecipientTypeRequest {
+// Create FileType
+message CreateFileTypeRequest {
   string name = 1;
   string description = 2;
 }
 
-message CreateRecipientTypeResponse {
+message CreateFileTypeResponse {
   int32 status = 1;
   string id = 2;
   repeated string error = 3;
 }
 
-// Find RecipientType
+// Find FileType
 
 message FindOneRequest {
   string id = 1;
@@ -40,7 +40,7 @@ message FindOneRequest {
 message FindOneResponse {
   int32 status = 1;
   repeated string error = 2;
-  RecipientTypeData data = 3;
+  FileTypeData data = 3;
 }
 
 message FindAllRequest {
@@ -52,33 +52,33 @@ message FindAllResponse {
   int32 status = 1;
   repeated string error = 2;
   message data {
-    repeated RecipientTypeData activities = 1;
+    repeated FileTypeData activities = 1;
     int32 total = 2;
     int32 count = 3;
     int32 page = 4;
   }
 }
 
-// Update RecipientType
+// Update FileType
 
-message UpdateRecipientTypeRequest {
+message UpdateFileTypeRequest {
   string id = 1;
   optional string name = 2;
   optional string description = 3;
 }
 
-message UpdateRecipientTypeResponse {
+message UpdateFileTypeResponse {
   int32 status = 1;
   repeated string error = 2;
 }
 
-// Remove type
+// Remove FileType
 
-message RemoveRecipientTypeRequest {
+message RemoveFileTypeRequest {
   int32 id = 1;
 }
 
-message RemoveRecipientTypeResponse {
+message RemoveFileTypeResponse {
   int32 status = 1;
   repeated string error = 2;
 }
