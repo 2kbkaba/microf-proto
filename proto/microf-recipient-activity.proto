@@ -75,7 +75,7 @@ message UpdateActivityResponse {
 // Remove activity
 
 message RemoveActivityRequest {
-  int32 id = 1;
+  string id = 1;
 }
 
 message RemoveActivityResponse {
