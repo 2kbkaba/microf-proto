@@ -19,6 +19,14 @@ message RecipientTypeData {
   string updatedAt = 5;
   string updatedBy = 6;
 }
+
+message FindAllResponseData {
+  repeated RecipientTypeData recipientTypes = 1;
+  int32 total = 2;
+  int32 count = 3;
+  int32 page = 4;
+}
+
 // Create RecipientType
 message CreateRecipientTypeRequest {
   string name = 1;
@@ -51,12 +59,7 @@ message FindAllRequest {
 message FindAllResponse {
   int32 status = 1;
   repeated string error = 2;
-  message data {
-    repeated RecipientTypeData activities = 1;
-    int32 total = 2;
-    int32 count = 3;
-    int32 page = 4;
-  }
+  FindAllResponseData data = 3;
 }
 
 // Update RecipientType
